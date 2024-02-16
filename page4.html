@@ -9,12 +9,37 @@
 <body>
     <section class="container">
         <h1>The First Obstacle</h1>
-        <p>As you venture deeper into the Dark Forest, you encounter a mystical guardian. The guardian blocks your path and poses a riddle:</p>
-        <q><em>"I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?”</em></q>
+        <p><strong>As you venture deeper into the Dark Forest, you encounter a mystical guardian. The guardian blocks your path and poses a riddle:</strong></p>
+        <q><em>I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?</em></q>
+
+        <form id="firstObsForm" type="get" action="page5.html">
+            <label>Your Answer:
+                <input id="riddleAnswer" name="riddleAnswer" type="field"></input>
+                <button id="submitButton" type="submit" style="color: white; background-color: red;">Submit Answer</button>
+            </label>
+            <p><strong>Think carefully, for the correct answer will allow you passage.</strong></p>
+        </form>
     </section>
 
     <script>
-        
+        let riddleAnswer = document.getElementById("riddleAnswer");
+        let submitButton = document.getElementById("submitButton");
+
+        function buttonColor(correctAnswer, answerInput) {
+            if (answerInput != correctAnswer) {
+                submitButton.style.color = "white";
+                submitButton.style.backgroundColor = "red";
+            }
+            if (answerInput == correctAnswer) {
+                submitButton.style.color = "white";
+                submitsButton.style.backgroundColor = "green";
+            }
+        }
+        function callButtonColor() {
+            
+            buttonColor("hello", riddleAnswer.value);
+        }
+        riddleAnswer.addEventListener("keyup", callButtonColor);
     </script>
 </body>
 </html>
