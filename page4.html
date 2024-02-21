@@ -27,16 +27,13 @@
 
         function buttonColor(correctAnswer, answerInput) {
             if (answerInput != correctAnswer) {
-                submitButton.style.color = "white";
                 submitButton.style.backgroundColor = "red";
-            }
-            if (answerInput == correctAnswer) {
-                submitButton.style.color = "white";
-                submitsButton.style.backgroundColor = "green";
+                
+            } else {
+                submitButton.style.backgroundColor = "green";
             }
         }
         function callButtonColor() {
-            
             buttonColor("hello", riddleAnswer.value);
         }
         riddleAnswer.addEventListener("keyup", callButtonColor);
