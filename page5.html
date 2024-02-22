@@ -3,15 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Quest for the Crystal of Wisdom</title>
+    <title>The Journey Continues</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <section class="container">
-        <h1>Welcome to The Quest for the Crystal of Wisdom</h1>
-        <p>In a realm filled with magic and mystery, the Crystal of Wisdom has been stolen. As a young apprentice, your quest is to retrieve the crystal and restore balance to the kingdom.</p>
-        <p>Choose your character wisely, for each has unique strengths that will aid you on your journey.</p>
-        <button onclick="location.href='page2.html'">Begin Your Quest</button>
+        <h1>The Journey Continues</h1>
+        <p id="p1">With the guardian's riddle behind you, the path forward splits into three. Each route is known to favor certain traits: strength, wisdom, or stealth. Choose your path wisely, as it will influence the challenges you face ahead.</p>
+        <form id="pathForm" type="get">
+        <label>Choose your path:</label>
+        <select id="pathChoice">
+            <option value="0">--Please choose an option--</option>
+            <option value="1">The Path of Steath</option>
+            <option value="2">The Path of Wisdom</option>
+            <option value="3">The Path of Strength</option>
+        </select>
+        </form>
+        <button id="submitButton" type="submit">Continue on Your Journey</button>
+        <p id="p2">Your choice will not only test your abilities but also reveal deeper truths about your character.</p>
     </section>
+
+    <script>
+        const pathChoice = document.getElementById("pathChoice");
+        const pathForm = document.getElementById("pathForm")
+        const submitButton = document.getElementById("submitButton");
+        const body = document.querySelector("body");
+        const p1 = document.getElementById("p1");
+        const p2 = document.getElementById("p2");
+        const h1 = document.querySelector("h1");
+        const label = document.querySelector("label")
+
+        submitButton.disabled = true;
+        submitButton.style.backgroundColor = "red";
+
+        pathChoice.addEventListener("change", ()=> {
+            if (pathChoice.value === "0") {
+                pathForm.setAttribute("action", "page6.html");
+                submitButton.disabled = true;
+                body.style.backgroundColor = "white";
+                p1.style.color = "black";
+                p2.style.color = "black";
+                h1.style.color = "black";
+                label.style.color = "black";
+                submitButton.style.backgroundColor = "red";
+            } else if (pathChoice.value === "1") {
+                pathForm.setAttribute("action", "page5b.html");
+                submitButton.disabled = false;
+                body.style.backgroundColor = "purple";
+                p1.style.color = "white";
+                p2.style.color = "white";
+                h1.style.color = "white";
+                label.style.color = "white";
+                submitButton.style.backgroundColor = "#007bff";
+            } else if (pathChoice.value === "2") {
+                pathForm.setAttribute("action", "page6.html");
+                submitButton.disabled = false;
+                body.style.backgroundColor = "darkblue";
+                p1.style.color = "white";
+                p2.style.color = "white";
+                h1.style.color = "white";
+                label.style.color = "white";
+                submitButton.style.backgroundColor = "#007bff";
+            } else if (pathChoice.value === "3") {
+                pathForm.setAttribute("action", "page6.html");
+                submitButton.disabled = false;
+                body.style.backgroundColor = "darkred";
+                p1.style.color = "white";
+                p2.style.color = "white";
+                h1.style.color = "white";
+                label.style.color = "white";
+                submitButton.style.backgroundColor = "#007bff";
+            }
+        });
+        submitButton.addEventListener("click", () => {
+            if (submitButton.disabled) {
+                return;
+            }
+            pathForm.submit(); 
+        });
+    </script>
 </body>
 </html>
