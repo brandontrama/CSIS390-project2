@@ -24,19 +24,22 @@
     <script>
         let riddleAnswer = document.getElementById("riddleAnswer");
         let submitButton = document.getElementById("submitButton");
+        submitButton.disabled = true;
 
-        function buttonColor(correctAnswer, answerInput) {
+        function changeButton(correctAnswer, answerInput) {
             if (answerInput != correctAnswer) {
                 submitButton.style.backgroundColor = "red";
+                submitButton.disabled = true;
                 
             } else {
                 submitButton.style.backgroundColor = "green";
+                submitButton.disabled = false;
             }
         }
-        function callButtonColor() {
-            buttonColor("hello", riddleAnswer.value);
+        function callChangeButton() {
+            changeButton("echo", riddleAnswer.value);
         }
-        riddleAnswer.addEventListener("keyup", callButtonColor);
+        riddleAnswer.addEventListener("keyup", callChangeButton);
     </script>
 </body>
 </html>
