@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Final Showdown</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        div {
+            position: relative;
+            border: 1px solid black;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        div::before {
+            position: relative;
+            top: -10px;
+            background-color: white;
+        }
+        .approach-container::before {
+            content: "How will you confront Malakar?";
+        }
+        .character-container::before {
+            content: "Character Information";
+        }
+        .name-container {
+            margin: 10px;
+            padding-bottom: 10px;
+        }
+        .name-container::before {
+            content: "The Brave";
+        }
+        .weapon-container, .armor-container, .message-container {
+            margin: 10px;
+            margin-top: 20px;
+        }
+        .weapon-container section, .armor-container section {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 10px;
+        }
+        .weapon-container::before {
+            content: "Select Your Weapon:";
+        }
+        .armor-container::before {
+            content: "Select Your Armor:"
+        }
+        .message-container {
+            border: none;
+        }
+        #confront {
+            padding: 10px;
+        }
+        #weapons {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <h1>The Final Showdown</h1>
+<p>After a long journey filled with trials and challenges, you finally stand before Malakar's lair. The dark sorcerer awaits, the Crystal of Wisdom in his grasp. It's time to make your move.</p>
+<div class="approach-container">
+    <form id="approach" type="get" action="page7.html" onsubmit="return approach()">
+        <label>Choose wisely:</label>
+        <select id="approachChoice" name="approach">
+            <option value="0">--Please choose an option--</option>
+            <option value="1">Approach with Stealth</option>
+            <option value="2">Approach with Wisdom</option>
+            <option value="3">Approach with Strength</option>
+        </select>
+        </form>
+</div>
+
+<div class="character-container">
+    <div class="name-container">
+        <label id="characterLabel">Your Name:
+            <input id="nameInput" name="nameInput" type="field"></input>
+        </label>
+    </div>
+    <div class="weapon-container">
+        <section>
+            <label>
+                <input id="sword" name="weapon" type="radio">Sword</button>
+            </label>
+            <label>
+                <input id="bow" name="weapon" type="radio">Bow</button>
+            </label>
+            <label>
+                <input id="staff" name="weapon" type="radio">Staff</button>
+            </label>
+        </section>
+    </div>
+    <div class="armor-container">
+        <section>
+            <label><input type="checkbox">Plate Armor</input></label>
+            <label><input type="checkbox">Leather Armor</input></label>
+            <label><input type="checkbox">Cloak</input></label>
+        </section>
+    </div>
+    <div class="message-container" style="padding-bottom: 10px;">
+        <p>Leave a Message for Malakar:</p>
+        <input type="text" name="firstname" style="width: 375px; height: 75px;">
+    </div>
+</div>
+<button id="submitButton" type="submit">Face Malakar</button>
+<p>Your choice here will determine the fate of the kingdom. Choose wisely.</p>
+    </section>
+    <script>
+        const submitButton = document.getElementById("submitButton");
+        const approachForm = document.getElementById("approach");
+        const approachChoice = document.getElementById("approachChoice")
+
+        submitButton.disabled = true;
+
+        approachChoice.addEventListener("change", () => {
+            if (approachChoice.value !== "0") {
+                submitButton.disabled = false;
+            } else {
+                submitButton.disabled = true;
+            }
+        });
+
+        submitButton.addEventListener("click", () => {
+            approach.submit(); 
+        });
+    </script>
+</body>
+</html>
