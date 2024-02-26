@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest Conclusion</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .feedback-container {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <h1>Your Quest Has Concluded</h1>
+        <h2>For now!</h2>
+        <div id="choice">
+
+        </div>
+        <p>We hope you enjoyed your adventure. Would you like to provide feedback on your experience?</p>
+        <div class="feedback-container">
+            <p>Your Feedback:</p>
+            <input id="feedbackText" type="text" name="feedback" style="width: 375px; height: 60px;">
+        </div>
+        <div>
+            <button id="submitFeedback" type="submit">Submit Feedback</button>
+        </div>
+        <form id="playAgain" type="get" action="welcome.html">
+            <button id="playAgain" type="submit">Play Again</button>
+        </form>
+        <div>
+            <p>I would just like to thank my mom and dad for always believing and supporting me in whatever I do in life. I love them so much.</p>
+        </div>
+    </section>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const approach = urlParams.get('approach');
+
+        const choice = document.getElementById("choice");
+
+        let dynamicText;
+        if (approach === "1") {
+            dynamicText = "Based on your choices, everyone died. The kingdom will remember your deeds for generations to come.";
+        } else if (approach === "2") {
+            dynamicText = "Based on your choices, everyone survived. The kingdom will remember your deeds for generations to come.";
+        } else if (approach === "3") {
+            dynamicText = "Based on your choices, everyone almost died. The kingdom will remember your deeds for generations to come.";
+        }
+        var text = document.createElement("p");
+        text.innerHTML = dynamicText;
+        choice.appendChild(text);
+
+        const submitFeedback = document.getElementById("submitFeedback");
+        const playAgain = document.getElementById("playAgain");
+        const feedbackText = document.getElementById("feedbackText")
+
+        submitFeedback.addEventListener("click", () => {
+            submitFeedback.style.backgroundColor = "green";
+            console.log(feedbackText.value);
+            feedbackText.value = "";
+            submitFeedback.textContent = "Thank you for your feedback!";
+        });
+    </script>
+</body>
+</html>
